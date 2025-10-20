@@ -10,7 +10,7 @@ This is a **multimodal prototype** that demonstrates how an NHS-style triage cha
 
 
 ## Problem solving
-?. combining/weigthing text and image input --> describe physical characteristics and create summary with provisional diagnosis--> clinician apprves or disapproves ---> message back to pateint. Dring wait the chat bit provides guidelines such as if conditions worsens contact 999, or in the meantime symptomatic relif such as .... 
+?. combining/weigthing text and image input --> describe physical characteristics and create summary with provisional diagnosis--> clinician approves or disapproves ---> message back to patient. During wait, the chat bot provides guidelines such as if conditions worsens contact 999, or in the meantime symptomatic relief such as .... 
 
 ## Workflow
 
