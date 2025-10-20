@@ -15,6 +15,10 @@ import ollama
 import os
 from ollama import chat
 
+# Image captioning imports
+from transformers import BlipProcessor, BlipForConditionalGeneration
+from PIL import Image
+import torch
 
 # --- CONFIG ---
 INDEX_DIR = "./nhs_index"
@@ -22,6 +26,8 @@ NHS_URLS = [
     "https://www.nhs.uk/conditions/fever-in-adults/",
     "https://www.nhs.uk/conditions/heart-palpitations/",
     "https://www.nhs.uk/conditions/sweating/",
+    "https://www.nhs.uk/conditions/skin-rash-children/",
+    "https://www.nhs.uk/conditions/skin-rash-babies/",
 ]
 
 # --- STEP 1: Build or load the index ---
@@ -48,22 +54,30 @@ def build_or_load_index():
     return index
 
 
-# # --- STEP 2: Query function ---
-# def query_nhs(question: str, model_name: str = "mistral") -> str:
-#     index = build_or_load_index()
-#     llm = ollama.ChatCompletion(model="mistral")
-#     query_engine = index.as_query_engine(llm=llm)
-#     response = query_engine.query(question)
-#     print("\n🧠 NHS Summary:")
-#     print(response)
-#     return str(response)
+# --- STEP 2: Describe the image using BLIP ---
+def describe_image(image_path: str) -> str:
+    print(f"🖼️ Describing image: {image_path}")
+    processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
+    model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
+
+    image = Image.open(image_path).convert("RGB")
+    inputs = processor(image, return_tensors="pt")
+    out = model.generate(**inputs, max_new_tokens=50)
+    caption = processor.decode(out[0], skip_special_tokens=True)
+
+    print(f"📋 Image description: {caption}")
+    return caption
+
+# --- STEP 3: Query the NHS index ---
 
 
-from ollama import chat
-
-def query_nhs(question: str) -> str:
+def query_nhs(question: str, image_path: str = None) -> str:
     index = build_or_load_index()
     
+    # If an image is provided, describe it and append to the question
+    if image_path:
+        image_caption = describe_image(image_path)
+        question = f"{question} Here is an image description: {image_caption}"
     # Use Ollama's chat function
     response = chat(model="mistral", messages=[
         {"role": "user", "content": question}
@@ -78,4 +92,10 @@ def query_nhs(question: str) -> str:
 if __name__ == "__main__":
     print("✅ NHS Reader Ready.")
     query = input("\nAsk a question (e.g. 'What does NHS say about fever with palpitations?'):\n> ")
-    query_nhs(query)
+    img_choice = input("Do you want to include an image? (y/n): ").lower().strip()
+
+    if img_choice == 'y':
+        img_path = input("Enter the image file path:\n> ")
+        query_nhs(query, image_path=img_path)
+    else:
+        query_nhs(query)

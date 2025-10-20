@@ -1,0 +1,10 @@
+nhsvenv
+nhs_index
+__pycache__
+.env
+.envrc
+.DS_Store
+.ipynb_checkpoints
+.venv
+nhs_reader.ipynb
+asyncline
