@@ -1,10 +1,13 @@
 # Triage-using-NHS-conditions
+Current pathway via phone or online, with areas of improvement
+<img width="1543" height="833" alt="Screenshot 2025-10-21 at 09 19 51" src="https://github.com/user-attachments/assets/a36bf769-fea8-43d0-a131-d441bbee84b4" />
 
-# NHS Triage Assistant — Open Source Proof of Concept
+
+# NHS Triage Assistant — Proof of Concept
 
 This is a **multimodal prototype** that demonstrates how an NHS-style triage chatbot could combine
 ✅ **text understanding** (NHS.uk guidance) and  
-🖼️ **image understanding** (skin rash photos).
+🖼️ **image understanding** (skin rash photos to start with).
 
 > ⚠️ For demonstration only — not medical advice.
 
@@ -36,15 +39,13 @@ Example output: “Child has red vesicular spots around hands, feet, and mouth, 
 
 LLM produces a patient-friendly summary:
 
-Provisional diagnosis
 
-Typical course
 
 Symptomatic relief (hydration, paracetamol, calamine lotion)
 
 Red flags (“Contact 999 if…”)
 
-*This is not sent to the patient yet*
+
 
 **Human-in-the-Loop Review**
 
@@ -66,17 +67,18 @@ Urgent action guidance if condition worsens
 ---
 
 ## ✳️ Features
-- Uses **BLIP** (open-source) to describe uploaded images.  
+- Uses **CLIP** (open-source) to describe uploaded images.  
 - Uses **LlamaIndex** with NHS web pages for evidence-based answers.  
 - Uses a **local Ollama model** (`mistral`, `llama3`, etc.) for reasoning — no cloud APIs.  
 - Runs fully offline after setup.
 
 ---
+## Have a play
+ paediatric.py - Retrieves and indexes NHS rash information from the web using vector embeddings.
+Uses CLIP to analyse an uploaded rash image and estimate probabilities of matching conditions.
+Combines text and image insights to generate a structured, clinician-style summary via a local LLM (Mistral).
+** install Ollama locally :https://ollama.ai/download
 
 ## 🧱 Installation
+coming soon
 
-1. **Install dependencies**
-   ```bash
-   git clone https://github.com/<yourname>/nhs-triage-bot
-   
-   pip install -r requirements.txt
