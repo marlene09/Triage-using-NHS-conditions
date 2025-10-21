@@ -2,6 +2,10 @@
 Current pathway via phone or online, with areas of improvement
 <img width="1543" height="833" alt="Screenshot 2025-10-21 at 09 19 51" src="https://github.com/user-attachments/assets/a36bf769-fea8-43d0-a131-d441bbee84b4" />
 
+# Idea 💡
+<img width="1226" height="482" alt="Screenshot 2025-10-21 at 10 07 36" src="https://github.com/user-attachments/assets/c2784d6e-40c2-4bb6-8c37-c47e14e4d959" />
+
+
 
 # NHS Triage Assistant — Proof of Concept
 
@@ -9,7 +13,7 @@ This is a **multimodal prototype** that demonstrates how an NHS-style triage cha
 ✅ **text understanding** (NHS.uk guidance) and  
 🖼️ **image understanding** (skin rash photos to start with).
 
-> ⚠️ For demonstration only — not medical advice.
+> ⚠️ For experminentation only — not medical advice.
 
 
 ## Problem solving
@@ -18,12 +22,12 @@ This is a **multimodal prototype** that demonstrates how an NHS-style triage cha
 ## Workflow
 
 ***Pediatric Rash Triage POC Workflow***
-
+see: paediatric.py
 **User Input**
 
 Upload a photo of the rash.
 
-Optionally, enter textual info: age, symptoms, duration, location.
+Optionally, enter textual info: age, symptoms, duration, location.(not done yet)
 
 **Multi-Modal Analysis (Image + Text)**
 
