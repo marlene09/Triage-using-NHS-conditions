@@ -8,3 +8,4 @@ __pycache__
 .venv
 nhs_reader.ipynb
 asyncline
+nhs_venv

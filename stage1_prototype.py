@@ -68,7 +68,7 @@ def generate_provisional_summary(image_path, text):
 # -----------------------------
 # 4. Example Usage
 # -----------------------------
-image_path = "/Users/marlenepostop/Documents/NHS Conditions/image.png"
+image_path = "./image.png"
 patient_text = "Child has red spots around hands and feet, mild fever."
 
 summary = generate_provisional_summary(image_path, patient_text)
