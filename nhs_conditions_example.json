@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    {
+      "name": "Hand, foot and mouth disease (HFMD)",
+      "summary": "Common viral infection in young children causing blisters on hands, feet and mouth. Usually mild."
+    },
+    {
+      "name": "Chickenpox",
+      "summary": "A highly contagious viral illness. Characteristic itchy vesicular rash and fever."
+    },
+    {
+      "name": "Allergic rash",
+      "summary": "Skin reaction to allergens. Can be itchy and red; not usually infectious."
+    },
+    {
+      "name": "Measles",
+      "summary": "Viral disease with fever and widespread rash; requires clinical assessment."
+    }
+  ]
+}
